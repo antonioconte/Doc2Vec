@@ -1,1 +1,4 @@
-Doc2Vec impl
+## Doc2Vec impl
+
+
+pip install -r requirements.txt
