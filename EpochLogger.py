@@ -12,6 +12,6 @@ class EpochLogger(CallbackAny2Vec):
     def on_epoch_end(self, model):
         end = datetime.now()
         time = int((end - self.start).total_seconds())
-
-        print("> Epoch #{} END - TIME: {}s\n".format(self.epoch,time))
+        minute = time/60.0
+        print("> Epoch #{} END - TIME: {}s {}m\n".format(self.epoch,time,minute))
         self.epoch += 1

@@ -13,10 +13,10 @@ DEBUG = False
 # CBOW: several times faster to train than the skip-gram, slightly better accuracy for the frequent words
 # dm=1, ‘distributed memory’ (SKIP-GRAM). Otherwise, distributed bag of words (CBOW).
 DM = 1
-ALPHA = 0.025
+ALPHA = 0.001
 MIN_ALPHA = 0.00025
 WINDOW_CONTEXT = 10
-EPOCHS = 500
-VECTOR_SIZE = 200
-MIN_COUNT = 5
+EPOCHS = 200
+VECTOR_SIZE = 300
+MIN_COUNT = 3
 Num_of_Res = 5 # numero di risultati

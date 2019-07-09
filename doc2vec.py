@@ -40,6 +40,8 @@ class Doc2Vec_model(object):
         print('\nTotal docs learned %s' % (len(self.model.docvecs)))
         return self.model
 
+    def get(self):
+        return self.model
 
     def load(self):
         PATH = PATH_TO_EXISTING_MODEL + self.part + ".d2v"
@@ -57,6 +59,11 @@ class Doc2Vec_model(object):
         vector = self.model.infer_vector(words)
         return vector
 
+    def most_similar(self,v,N=0):
+        if N == 0:
+            return self.model.docvecs.most_similar([v])
+        else:
+            return self.model.docvecs.most_similar([v],topn=N)
 
     def predict(self,txt):
         self.__check()
@@ -83,16 +90,26 @@ def test(txt,type="S"):
 
 if __name__ == '__main__':
 
-    src_path = path_train
-    print('PATH TRAIN: ',path_train)
-    train(src_path, type="S")
-
-    # txt = """THE COMMISSION OF THE EUROPEAN COMMUNITIES,
-    # Having regard to the Treaty establishing the European Community,
-    # Having regard to Council Regulation (EC) No 510/2006 of 20 March 2006 on the protection of geographical indications and designations of origin for agricultural products and foodstuffs, and in particular the first subparagraph of Article 7(4) thereof,
-    # Whereas:
-    # (1) Pursuant to the first subparagraph of Article 6(2) and in accordance with Article 17(2) of Regulation (EC) No 510/2006, France’s application to register the name ‘Moutarde de Bourgogne’ was published in the Official Journal of the European Union .
-    # (2) As no objections within the meaning of Article 7 of Regulation (EC) No 510/2006 were received by the Commission, this name should be entered in the register,
-    # HAS ADOPTED THIS REGULATION:"""
+    # src_path = path_train
+    # print('PATH TRAIN: ',path_train)
+    # train(src_path, type="S")
     #
+    txt = """
+    Article 18 Competent authority Member States shall make the appropriate administrative arrangements, 
+    including the designation of the appropriate competent authority or authorities, for the implementation 
+    of the rules of this Directive. Where more than one competent authority is designated, the work of these 
+    authorities undertaken pursuant to this Directive must be coordinated.",      
+    """
+
     # test(txt,type="S")
+
+    model = Doc2Vec_model(type="S")
+    path = model.load()
+    txt_edit = model.pipe.convert(txt)
+    print(txt_edit)
+    vector = model.gen_vec(txt_edit)
+    knn = model.most_similar(vector)
+    import json
+    print(json.dumps({'query':txt, 'res': knn}, indent=4, sort_keys=True))
+    # v1 = model.infer_vector(txt_edit)
+
