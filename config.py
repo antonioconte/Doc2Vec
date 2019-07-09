@@ -1,8 +1,8 @@
 path_train = "/home/anto/Scrivania/Tesi/Doc2Vec/dataset/"
 training = True
 to_save = True
-PATH_TO_EXISTING_MODEL = "/home/anto/Scrivania/Tesi/Doc2Vec/model/"
-PATH_TO_SAVE_MODEL = "/home/anto/Scrivania/Tesi/Doc2Vec/model/"
+PATH_TO_EXISTING_MODEL = "./model/"
+PATH_TO_SAVE_MODEL = "./model/"
 
 
 NumLoadedDoc = 0

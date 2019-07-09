@@ -1,6 +1,6 @@
 import spacy
+import en_core_web_md
 import  pandas as pd
-
 
 # TEXT
 # TOKENIZATION
@@ -9,7 +9,8 @@ import  pandas as pd
 
 class TextPipeline:
     def __init__(self):
-        self.nlp = spacy.load('en')
+	    self.nlp = en_core_web_md.load()
+
 
     def convert(self,text):
         text = " ".join(text.split())
