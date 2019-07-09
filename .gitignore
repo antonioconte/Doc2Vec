@@ -1,4 +1,4 @@
-data_test/
+dataset/
 .idea/
 __pycache__/
 model/

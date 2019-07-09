@@ -1,5 +1,5 @@
 import spacy
-import en_core_web_md
+#import en_core_web_md
 import  pandas as pd
 
 # TEXT
@@ -9,7 +9,7 @@ import  pandas as pd
 
 class TextPipeline:
     def __init__(self):
-	    self.nlp = en_core_web_md.load()
+	    self.nlp = spacy.load("en")
 
 
     def convert(self,text):
