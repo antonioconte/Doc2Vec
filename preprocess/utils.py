@@ -8,14 +8,13 @@ from bs4 import BeautifulSoup
 
 def remove_tag(text):
     soup = BeautifulSoup(text,'html.parser').find_all(recursive=False)
-    print(soup)
     text = [item.getText() for item in soup]
     return " ".join(text)
 
 def save_on_file(text, path):
-    Html_file = open(path, "w")
-    Html_file.write(text)
-    Html_file.close()
+    file = open(path, "w")
+    file.write(text)
+    file.close()
 
 def make_doclist():
     files_name = [f for f in listdir(path_train) if isfile(join(path_train, f))]

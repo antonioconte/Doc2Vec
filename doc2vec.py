@@ -6,6 +6,10 @@ from preprocess.text_pipeline import TextPipeline as pipe
 from datetime import datetime
 import multiprocessing
 
+from utils import metrics
+
+
+
 class Doc2Vec_model(object):
     def __init__(self,type="",path=""):
         self.part = type.upper()
@@ -84,32 +88,33 @@ def test(txt,type="S"):
     model = Doc2Vec_model(type=type)
     model.load()
     import json
-    res = model.predict(txt)
-    print(json.dumps({ 'query':txt, 'res':res}, indent=4, sort_keys=True))
+    # print("res",res)
+    (time,res) = model.predict(txt)
+    (qnorm,res) = metrics.compute(txt,res)
+    print(json.dumps({ 'query':txt,'query_normalized':qnorm, 'res':res, 'time': time }, indent=4, sort_keys=True))
 
 
 if __name__ == '__main__':
-
     # src_path = path_train
     # print('PATH TRAIN: ',path_train)
     # train(src_path, type="S")
-    #
+
     txt = """
-    Article 18 Competent authority Member States shall make the appropriate administrative arrangements, 
-    including the designation of the appropriate competent authority or authorities, for the implementation 
-    of the rules of this Directive. Where more than one competent authority is designated, the work of these 
-    authorities undertaken pursuant to this Directive must be coordinated.",      
+    Article 18 Competent authority Member States shall make the appropriate administrative arrangements,
+    including the designation of the appropriate competent authority or authorities, for the implementation
+    of the rules of this Directive. Where more than one competent authority is designated, the work of these
+    authorities undertaken pursuant to this Directive must be coordinated.",
     """
 
-    # test(txt,type="S")
-
-    model = Doc2Vec_model(type="S")
-    path = model.load()
-    txt_edit = model.pipe.convert(txt)
-    print(txt_edit)
-    vector = model.gen_vec(txt_edit)
-    knn = model.most_similar(vector)
-    import json
-    print(json.dumps({'query':txt, 'res': knn}, indent=4, sort_keys=True))
-    # v1 = model.infer_vector(txt_edit)
+    test(txt,type="S")
+    #
+    # model = Doc2Vec_model(type="S")
+    # path = model.load()
+    # txt_edit = model.pipe.convert(txt)
+    # print(txt_edit)
+    # vector = model.gen_vec(txt_edit)
+    # knn = model.most_similar(vector)
+    # import json
+    # print(json.dumps({'query':txt, 'res': knn}, indent=4, sort_keys=True))
+    # # v1 = model.infer_vector(txt_edit)
 

@@ -1,4 +1,4 @@
-path_train = "/home/anto/Scrivania/Tesi/Doc2Vec/data_test/"
+path_train = "/home/anto/Scrivania/Tesi/Doc2Vec/dataset/"
 training = True
 to_save = True
 PATH_TO_EXISTING_MODEL = "/home/anto/Scrivania/Tesi/Doc2Vec/model/"
@@ -16,7 +16,7 @@ DM = 1
 ALPHA = 0.001
 MIN_ALPHA = 0.00025
 WINDOW_CONTEXT = 10
-EPOCHS = 200
+EPOCHS = 10
 VECTOR_SIZE = 300
 MIN_COUNT = 3
 Num_of_Res = 5 # numero di risultati

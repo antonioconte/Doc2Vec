@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask import Flask,request
 from doc2vec import Doc2Vec_model
 from preprocess.utils import remove_tag
+from utils import metrics
 
 app = Flask(__name__)
 model = None
@@ -36,6 +37,7 @@ def query():
 def sections(txt):
 	txt = remove_tag(txt) # txt da pulire dei tag dell'html
 	(time,res) = model.predict(txt)
+	(_, res) = metrics.compute(txt, res)
 	msg = {'data': res,'query':txt,'time': time}
 	response = app.response_class(
 			   	response=json.dumps(msg, indent=4),
@@ -59,7 +61,6 @@ def train():
 	except:
 		status = 505
 		msg['res'] = "Something went wrong."
-
 	response = app.response_class(
 			   	response=json.dumps( msg, indent=4),
 			   	status=status,
@@ -68,5 +69,4 @@ def train():
 	return response
 
 if __name__ == '__main__':
-
 	app.run(debug=False)
