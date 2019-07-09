@@ -9,7 +9,7 @@ import  pandas as pd
 
 class TextPipeline:
     def __init__(self):
-	    self.nlp = spacy.load("en")
+	    self.nlp = spacy.load("en_core_web_sm")
 
 
     def convert(self,text):
