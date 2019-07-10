@@ -17,9 +17,12 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 def load_model():
 	global model
 	msg = {}
-	model = Doc2Vec_model(type="S")
-	path_model = model.load()
-	msg['data'] =  path_model
+	if model == None:
+		model = Doc2Vec_model(type="S")
+		path_model = model.load()
+		msg['data'] =  path_model
+	else:
+		msg['data'] = "Model already loded"	
 	response = app.response_class(
 		response=json.dumps(msg, indent=4),
 		status=200,

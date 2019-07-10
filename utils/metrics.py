@@ -7,8 +7,9 @@ def Levenshtein(txt1,txt2):
     # print("2:",txt2)
     lev = textdistance.Levenshtein()
     value = lev.normalized_similarity(txt1,txt2)
-    return round_toN(value)
-    # return '%.2f' % lev.normalized_similarity(txt1,txt2)
+    return '%.2f' % lev.normalized_similarity(txt1,txt2)
+    #value = lev.distance(txt1,txt2) 
+    #return round_toN(value,N="0")
 
 def Jaccard(txt1,txt2):
     jac = textdistance.Jaccard()
@@ -32,8 +33,8 @@ def distance_metrics(ref,item,pipe):
         'text': item[0]
         , 'text_normalized': text_normalized
         , 'cosine': item[1]
-        # , 'lev': Levenshtein(ref, text_normalized)
-        , 'lev': 0
+        , 'lev': Levenshtein(ref, text_normalized)
+        #, 'lev': 0
 
         , 'jac': Jaccard(ref,text_normalized)
     }
