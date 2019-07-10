@@ -3,7 +3,7 @@ from os import listdir
 from os.path import isfile, join
 from tqdm import tqdm
 import spacy
-from config import *
+import config
 
 
 def extract_sections(filename,soup):
@@ -45,7 +45,7 @@ def extract_phrase(filename,soup, lang="en",min_count=5):
         if len(txt.split()) >= min_count:
             text.append(txt)
     text = " ".join(text)
-    nlp = spacy.load(lang + '_core_web_sm')
+    nlp = spacy.load(lang + '_core_web_'+config.size)
     doc = nlp(text)
     num_f = 0
 
