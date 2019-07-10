@@ -88,7 +88,6 @@ def test(txt,type="S"):
     model = Doc2Vec_model(type=type)
     model.load()
     import json
-    # print("res",res)
     (time,res) = model.predict(txt)
     (qnorm,res) = metrics.compute(txt,res)
     print(json.dumps({ 'query':txt,'query_normalized':qnorm, 'res':res, 'time': time }, indent=4, sort_keys=True))

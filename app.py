@@ -32,7 +32,6 @@ def load_model():
 
 @app.route('/query/', methods=['POST'])
 def query():
-	# txt da pulire dei tag dell'html
 	txt = request.json['data']
 	response = sections(txt)
 	return response
