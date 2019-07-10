@@ -94,26 +94,26 @@ def test(txt,type="S"):
 
 
 if __name__ == '__main__':
-    # src_path = path_train
-    # print('PATH TRAIN: ',path_train)
-    # train(src_path, type="S")
-
-    txt = """
-    Article 18 Competent authority Member States shall make the appropriate administrative arrangements,
-    including the designation of the appropriate competent authority or authorities, for the implementation
-    of the rules of this Directive. Where more than one competent authority is designated, the work of these
-    authorities undertaken pursuant to this Directive must be coordinated.",
-    """
-
-    test(txt,type="S")
+    src_path = path_train
+    print('PATH TRAIN: ',src_path)
+    train(src_path, type="F")
     #
-    # model = Doc2Vec_model(type="S")
-    # path = model.load()
-    # txt_edit = model.pipe.convert(txt)
-    # print(txt_edit)
-    # vector = model.gen_vec(txt_edit)
-    # knn = model.most_similar(vector)
-    # import json
-    # print(json.dumps({'query':txt, 'res': knn}, indent=4, sort_keys=True))
-    # # v1 = model.infer_vector(txt_edit)
+    # txt = """
+    # Article 18 Competent authority Member States shall make the appropriate administrative arrangements,
+    # including the designation of the appropriate competent authority or authorities, for the implementation
+    # of the rules of this Directive. Where more than one competent authority is designated, the work of these
+    # authorities undertaken pursuant to this Directive must be coordinated.",
+    # """
+    #
+    # test(txt,type="S")
+    # #
+    # # model = Doc2Vec_model(type="S")
+    # # path = model.load()
+    # # txt_edit = model.pipe.convert(txt)
+    # # print(txt_edit)
+    # # vector = model.gen_vec(txt_edit)
+    # # knn = model.most_similar(vector)
+    # # import json
+    # # print(json.dumps({'query':txt, 'res': knn}, indent=4, sort_keys=True))
+    # # # v1 = model.infer_vector(txt_edit)
 

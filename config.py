@@ -1,4 +1,6 @@
-path_train = "/home/anto/Scrivania/Tesi/Doc2Vec/dataset/"
+path_train = "./dataset/train/"
+path_test = "./dataset/test/"
+size = "sm"
 training = True
 to_save = True
 PATH_TO_EXISTING_MODEL = "./model/"
