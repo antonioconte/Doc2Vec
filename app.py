@@ -36,6 +36,21 @@ def query():
 	response = sections(txt)
 	return response
 
+@app.route('/', methods=['GET'])
+def index():
+	return '''
+		<h4 
+		style="text-align: center;
+    	margin: 10%;">
+    		Entrypoint Doc2Vec
+    		<br>
+	    <a href="/connect/">Connect</a> <br>
+	    <a href="http://ltw1515.web.cs.unibo.it/gui">GUI</a>
+
+    	</h4>
+
+    	'''
+
 def sections(txt):
 	txt = remove_tag(txt) # txt da pulire dei tag dell'html
 	(time,res) = model.predict(txt)
